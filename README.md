@@ -1,2 +1,5 @@
 # paragraphs
-paragraphs of random text on a minimalist website
+
+small web app for my Good Friend and funny lady Chloe Alison Escott
+
+**WIP**
