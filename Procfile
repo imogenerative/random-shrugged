@@ -1,1 +1,1 @@
-web: gunicorn -w 4 app:pARAGRAPHS
+web: python app.py

@@ -1,5 +1,4 @@
-import atexit
-import random
+import atexit, os, random
 
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
@@ -43,3 +42,6 @@ def fIRST_PARAGRAPH():
 def pARAGRAPH():
     return render_template("index.html", paragraph=tHE_PARAGRAPH)
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    pARAGRAPHS.run(host="0.0.0.0", port=port)
