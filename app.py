@@ -9,7 +9,7 @@ from flask import Flask, render_template
 pARAGRAPHS = Flask(__name__)
 
 # sETTINGS
-tHE_DURATION = 1800
+tHE_DURATION = 30
 tHE_FILE = "paragraphs.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
@@ -21,6 +21,7 @@ def dEFINE_PARAGRAPH():
 
         return tHE_PARAGRAPH
 
+# tHE SCHEDULER
 sCHEDULER = BackgroundScheduler()
 sCHEDULER.start()
 sCHEDULER.add_job(
@@ -31,7 +32,12 @@ sCHEDULER.add_job(
     replace_existing=True)
 atexit.register(lambda: sCHEDULER.shutdown())
 
-tHE_PARAGRAPH = dEFINE_PARAGRAPH()
+@pARAGRAPHS.before_first_request
+def fIRST_PARAGRAPH():
+    global tHE_PARAGRAPH
+    tHE_PARAGRAPH = dEFINE_PARAGRAPH()
+
+    return tHE_PARAGRAPH
 
 @pARAGRAPHS.route('/')
 def pARAGRAPH():
