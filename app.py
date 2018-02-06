@@ -6,7 +6,7 @@ from apscheduler.triggers.interval import IntervalTrigger
 
 from flask import Flask, render_template
 
-aPP = Flask(__name__)
+pARAGRAPHS = Flask(__name__)
 
 # sETTINGS
 tHE_DURATION = 1800
@@ -33,7 +33,7 @@ atexit.register(lambda: sCHEDULER.shutdown())
 
 tHE_PARAGRAPH = dEFINE_PARAGRAPH()
 
-@aPP.route('/')
+@pARAGRAPHS.route('/')
 def pARAGRAPH():
     return render_template("index.html", paragraph=tHE_PARAGRAPH)
 
