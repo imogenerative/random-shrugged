@@ -12,7 +12,7 @@ tHE_DURATION = 10
 tHE_FILE = "paragraphs.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
-def dEFINE_PARAGRAPH(f):
+def dEFINE_PARAGRAPH():
     def aCTUALL_INES(file):
         for line in file:
             line = line.rstrip()
