@@ -13,7 +13,7 @@ tHE_FILE = "paragraphs.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
 def dEFINE_PARAGRAPH():
-    def aCTUAL_INES(file):
+    def aCTUAL_LINES(file):
         for line in file:
             line = line.rstrip()
             if line:
