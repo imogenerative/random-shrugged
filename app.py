@@ -12,9 +12,18 @@ tHE_DURATION = 10
 tHE_FILE = "paragraphs.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
-def dEFINE_PARAGRAPH():
+def dEFINE_PARAGRAPH(f):
+    def aCTUALL_INES(file):
+    for line in file:
+        line = line.rstrip()
+        if line:
+            yield line
+    pARAGRAPHS = ()
+
     global tHE_PARAGRAPH
-    pARAGRAPHS = filter(None, open(tHE_FILE, 'r').read().splitlines())
+    with open(tHE_FILE) as file:
+        for line in aCTUAL_LINES(file):
+            pARAGRAPHS.append(line)
     tHE_PARAGRAPH = pARAGRAPHS[random.randint(0, len(pARAGRAPHS))]
 
     return tHE_PARAGRAPH
