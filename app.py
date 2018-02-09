@@ -14,10 +14,10 @@ tHE_FILE = "paragraphs.txt"
 # rETURN A PARAGRAPH FROM THE TEXT
 def dEFINE_PARAGRAPH(f):
     def aCTUALL_INES(file):
-    for line in file:
-        line = line.rstrip()
-        if line:
-            yield line
+        for line in file:
+            line = line.rstrip()
+            if line:
+                yield line
     pARAGRAPHS = ()
 
     global tHE_PARAGRAPH
