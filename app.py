@@ -8,17 +8,16 @@ from flask import Flask, render_template
 pARAGRAPHS = Flask(__name__)
 
 # sETTINGS
-tHE_DURATION = 30
+tHE_DURATION = 10
 tHE_FILE = "paragraphs.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
 def dEFINE_PARAGRAPH():
     global tHE_PARAGRAPH
-    with open(tHE_FILE) as tEXT:
-        pARAGRAPHS = tEXT.readlines()
-        tHE_PARAGRAPH = pARAGRAPHS[random.randint(0, len(pARAGRAPHS))]
+    pARAGRAPHS = filter(None, open(tHE_FILE, 'r').read().splitlines())
+    tHE_PARAGRAPH = pARAGRAPHS[random.randint(0, len(pARAGRAPHS))]
 
-        return tHE_PARAGRAPH
+    return tHE_PARAGRAPH
 
 # tHE SCHEDULER
 sCHEDULER = BackgroundScheduler()
