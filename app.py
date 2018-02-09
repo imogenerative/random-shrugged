@@ -18,7 +18,7 @@ def dEFINE_PARAGRAPH():
             line = line.rstrip()
             if line:
                 yield line
-    pARAGRAPHS = ()
+    pARAGRAPHS = []
 
     global tHE_PARAGRAPH
     with open(tHE_FILE) as file:
