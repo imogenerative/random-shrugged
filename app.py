@@ -8,7 +8,6 @@ from flask import Flask, render_template
 pARAGRAPHS = Flask(__name__)
 
 # sETTINGS
-tHE_DURATION = int(os.environ['DELAY'])
 tHE_FILE = "markov.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
@@ -27,17 +26,6 @@ def dEFINE_PARAGRAPH():
     tHE_PARAGRAPH = pARAGRAPHS[random.randint(0, len(pARAGRAPHS))]
 
     return tHE_PARAGRAPH
-
-# tHE SCHEDULER
-#sCHEDULER = BackgroundScheduler()
-#sCHEDULER.start()
-#sCHEDULER.add_job(
-#    func=dEFINE_PARAGRAPH,
-#    trigger=IntervalTrigger(seconds=tHE_DURATION),
-#    id="tHE_PARAGRAPH",
-#    name="gET A RANDOM PARAGRAPH",
-#    replace_existing=True)
-#atexit.register(lambda: sCHEDULER.shutdown())
 
 @pARAGRAPHS.before_first_request
 def fIRST_PARAGRAPH():
