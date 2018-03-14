@@ -1,14 +1,10 @@
 import atexit, os, random
 
-#from apscheduler.schedulers.background import BackgroundScheduler
-#from apscheduler.triggers.interval import IntervalTrigger
-
 from flask import Flask, render_template
 
 pARAGRAPHS = Flask(__name__)
 
 # sETTINGS
-tHE_DURATION = int(os.environ['DELAY'])
 tHE_FILE = "markov.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
@@ -20,7 +16,6 @@ def dEFINE_PARAGRAPH():
                 yield line
     pARAGRAPHS = []
 
-    global tHE_PARAGRAPH
     with open(tHE_FILE) as file:
         for line in aCTUAL_LINES(file):
             pARAGRAPHS.append(line)
@@ -28,27 +23,9 @@ def dEFINE_PARAGRAPH():
 
     return tHE_PARAGRAPH
 
-# tHE SCHEDULER
-#sCHEDULER = BackgroundScheduler()
-#sCHEDULER.start()
-#sCHEDULER.add_job(
-#    func=dEFINE_PARAGRAPH,
-#    trigger=IntervalTrigger(seconds=tHE_DURATION),
-#    id="tHE_PARAGRAPH",
-#    name="gET A RANDOM PARAGRAPH",
-#    replace_existing=True)
-#atexit.register(lambda: sCHEDULER.shutdown())
-
-@pARAGRAPHS.before_first_request
-def fIRST_PARAGRAPH():
-    global tHE_PARAGRAPH
-    tHE_PARAGRAPH = dEFINE_PARAGRAPH()
-
-    return tHE_PARAGRAPH
-
 @pARAGRAPHS.route('/')
 def pARAGRAPH():
-    return render_template("index.html", paragraph=tHE_PARAGRAPH)
+    return render_template("index.html", paragraph=dEFINE_PARAGRAPH())
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
