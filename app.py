@@ -8,7 +8,7 @@ from flask import Flask, render_template
 pARAGRAPHS = Flask(__name__)
 
 # sETTINGS
-tHE_DURATION = os.environ['DELAY']
+tHE_DURATION = int(os.environ['DELAY'])
 tHE_FILE = "paragraphs.txt"
 
 # rETURN A PARAGRAPH FROM THE TEXT
