@@ -16,7 +16,6 @@ def dEFINE_PARAGRAPH():
                 yield line
     pARAGRAPHS = []
 
-    global tHE_PARAGRAPH
     with open(tHE_FILE) as file:
         for line in aCTUAL_LINES(file):
             pARAGRAPHS.append(line)
@@ -24,16 +23,9 @@ def dEFINE_PARAGRAPH():
 
     return tHE_PARAGRAPH
 
-@pARAGRAPHS.before_first_request
-def fIRST_PARAGRAPH():
-    global tHE_PARAGRAPH
-    tHE_PARAGRAPH = dEFINE_PARAGRAPH()
-
-    return tHE_PARAGRAPH
-
 @pARAGRAPHS.route('/')
 def pARAGRAPH():
-    return render_template("index.html", paragraph=tHE_PARAGRAPH)
+    return render_template("index.html", paragraph=dEFINE_PARAGRAPH())
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
