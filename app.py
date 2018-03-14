@@ -1,8 +1,5 @@
 import atexit, os, random
 
-#from apscheduler.schedulers.background import BackgroundScheduler
-#from apscheduler.triggers.interval import IntervalTrigger
-
 from flask import Flask, render_template
 
 pARAGRAPHS = Flask(__name__)
