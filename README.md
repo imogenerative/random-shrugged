@@ -1,5 +1,5 @@
-# paragraphs
+# Markov Shrugged
 
-small web app for my Good Friend and funny lady Chloe Alison Escott
+small web app for consumig the Markov Shrugged novel in bite sized pieces.
 
 **WIP**
